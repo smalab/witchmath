@@ -2,10 +2,7 @@
 using System.Collections;
 
 public class BulletMaster : MonoBehaviour {
-
-
-
-	public GameObject CenterPlus;
+	
 	public GameObject UnderNum;
 
 	int[] rndArray = new int[9] ;
@@ -27,10 +24,6 @@ public class BulletMaster : MonoBehaviour {
 
 		}
 
-
-		Instantiate(CenterPlus, new Vector3(0.23f, 0.4f, 0), Quaternion.identity);
-		Instantiate(CenterPlus, new Vector3(0.43f, 0.4f, 0), Quaternion.identity);
-		Instantiate(CenterPlus, new Vector3(0.63f, 0.4f, 0), Quaternion.identity);
 
 		float bulletPos=0.03f;
 
