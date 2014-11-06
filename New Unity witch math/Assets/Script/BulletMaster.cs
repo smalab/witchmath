@@ -12,6 +12,8 @@ public class BulletMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+
 		int rnd;
 		for(int i=1;i<10;i++){
 
@@ -32,14 +34,14 @@ public class BulletMaster : MonoBehaviour {
 
 	        if(i%2==0){
 
-				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.0f, 0), Quaternion.Euler(0f,180f,0f))as GameObject;
+				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -0.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
 
 			}else{
 
-				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -2.0f, 0), Quaternion.Euler(0f,180f,0f))as GameObject;
+				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
