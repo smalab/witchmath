@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BulletMaster : MonoBehaviour {
 	
-	public GameObject UnderNum;
+	public GameObject[] UnderNum =new GameObject[10];
 	public GameObject parent;
 
 	int[] rndArray = new int[9] ;
@@ -26,22 +26,20 @@ public class BulletMaster : MonoBehaviour {
 		}
 
 
-		float bulletPos=0.03f;
+
 
 		for(int i=0;i<9;i++){
 
 	        if(i%2==0){
 
-				GameObject num =Instantiate(UnderNum, new Vector3(bulletPos+(i/10f), 0.2f, 0), Quaternion.identity)as GameObject;
-				num.transform.parent = parent.transform;
+				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.0f, 0), Quaternion.Euler(0f,180f,0f))as GameObject;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
 
 			}else{
 
-				GameObject num =Instantiate(UnderNum, new Vector3(bulletPos+(i/10f), 0.1f, 0), Quaternion.identity)as GameObject;
-				num.transform.parent = parent.transform;
+				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -2.0f, 0), Quaternion.Euler(0f,180f,0f))as GameObject;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Bullet: MonoBehaviour {
 
-	public Text myText;  
+
 	public int bulletValue;
 	public Vector3 startVector;
 	public Vector3 goalVector;
@@ -16,7 +16,7 @@ public class Bullet: MonoBehaviour {
 	void Start () {
 
 		startVector = this.transform.position;
-		myText.text = ""+bulletValue;	
+	
 		
 	}
 	// Use this for initialization

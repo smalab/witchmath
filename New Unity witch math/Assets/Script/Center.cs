@@ -14,11 +14,11 @@ public class Center : MonoBehaviour {
 
 		GameObject s;
 	
-		s=Instantiate(CenterPlus, new Vector3(0.23f, 0.4f, 0), Quaternion.identity)as GameObject;
+		s=Instantiate(CenterPlus, new Vector3(-1.0f, 0.5f, 0), Quaternion.identity)as GameObject;
 		CenterPos[0]=s.transform.position;
-		s=Instantiate(CenterPlus, new Vector3(0.43f, 0.4f, 0), Quaternion.identity)as GameObject;
+		s=Instantiate(CenterPlus, new Vector3(0.0f, 0.5f, 0), Quaternion.identity)as GameObject;
 		CenterPos[1]=s.transform.position;
-		s=Instantiate(CenterPlus, new Vector3(0.63f, 0.4f, 0), Quaternion.identity)as GameObject;
+		s=Instantiate(CenterPlus, new Vector3(1.0f, 0.5f, 0), Quaternion.identity)as GameObject;
 		CenterPos[2]=s.transform.position;
 
 	}
