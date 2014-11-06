@@ -26,6 +26,18 @@ public class Enemy : MonoBehaviour {
 	
 	}
 
-	public void Attack(){
+	public void Attacked(){
+	
+		GameObject CT = GameObject.Find("BulletCT");
+		BulletMaster master = CT.GetComponent<BulletMaster>();
+		master.LockBullet();
+		Center center = CT.GetComponent<Center>();
+		int sum=center.SumCenter();
+		if(sum==enemyPoint){
+			Debug.Log("win");
+		}else{
+			Debug.Log("lose");
+		}
+
 	}
 }

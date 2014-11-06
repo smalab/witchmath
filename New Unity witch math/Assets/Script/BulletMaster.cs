@@ -35,6 +35,7 @@ public class BulletMaster : MonoBehaviour {
 	        if(i%2==0){
 
 				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -0.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
+				bulletArray[i]=num;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
@@ -42,6 +43,7 @@ public class BulletMaster : MonoBehaviour {
 			}else{
 
 				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
+				bulletArray[i]=num;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
@@ -56,5 +58,16 @@ public class BulletMaster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void LockBullet(){
+
+		for(int i=0;i<9;i++){
+
+			Bullet b = bulletArray[i].GetComponent<Bullet>();
+			b.state=3;
+
+		}
+
 	}
 }

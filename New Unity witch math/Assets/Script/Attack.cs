@@ -17,9 +17,9 @@ public class Attack : MonoBehaviour {
 
 		GameObject CT = GameObject.Find("GameCT");
 		Enemy enemy = CT.GetComponent<Enemy>();
-		enemy.Attack();
-
 		Debug.Log("Attack");
+		enemy.Attacked();
+
 		Destroy(gameObject);
 		Destroy(this);
 		

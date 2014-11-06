@@ -107,6 +107,13 @@ public class Center : MonoBehaviour {
 
 	}
 
+	public int SumCenter(){
+		int sum=0;
+		for(int i=0;i<3;i++){
+				sum+=cells[i];
+		}
+		return sum;
+	}
 
 
 
