@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System;
 
 public class BulletMaster : MonoBehaviour {
 	
@@ -12,20 +14,8 @@ public class BulletMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		int rnd;
-		for(int i=1;i<10;i++){
-
-
-			do{
-			   rnd=Random.Range (0, 9);
-
-			}while(rndArray[rnd]!=0);
-
-			rndArray[rnd]=i;
-
-		}
-
-
+        var random = new System.Random();
+        var rndArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.OrderBy(_ => random.NextDouble()).Take(9).ToArray();
 
 
 		for(int i=0;i<9;i++){
