@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour {
 
 	void OnMouseDown() {
 
-		GameObject CT = GameObject.Find("GameCT");
+		GameObject CT = GameObject.Find("EnemyCT");
 		Enemy enemy = CT.GetComponent<Enemy>();
 		Debug.Log("Attack");
 		enemy.Attacked();

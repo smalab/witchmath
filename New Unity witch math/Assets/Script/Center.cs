@@ -12,6 +12,9 @@ public class Center : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+		CenterPlus = (GameObject)Resources.Load ("Prefab/Cube");
+		button = (GameObject)Resources.Load ("Prefab/AttackButton");
 		GameObject s;
 	
 		s=Instantiate(CenterPlus, new Vector3(-1.0f, 1.0f, 0), Quaternion.identity)as GameObject;

@@ -8,11 +8,14 @@ public class Bullet: MonoBehaviour {
 	public int bulletValue;
 	public Vector3 startVector;
 	public Vector3 goalVector;
+	public Vector3 endVector=new Vector3(0f, 2.2f, 0f);
 	public int state = 1;
 	private float  speed=0.1f;
 	private float screenPoint1;
 	private float screenPoint2;
 	private bool move=false;
+	private bool endMove=false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -28,6 +31,19 @@ public class Bullet: MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position , goalVector , speed);
 			if(this.transform.position==goalVector)
 				move=false;
+		}
+
+		if(endMove==true){
+			transform.position = Vector3.MoveTowards (transform.position , endVector , speed);
+			if(this.transform.position==endVector){
+				endMove=false;
+
+				GameObject CT = GameObject.Find("EnemyCT");
+				Enemy em = CT.GetComponent<Enemy>();
+				em.bulletEnd=true;
+
+				Destroy(gameObject);
+			}
 		}
 	
 	}
@@ -73,6 +89,12 @@ public class Bullet: MonoBehaviour {
 		Debug.Log(goalVector);
 		move=true;
 		state=1;
+
+	}
+
+	public void MoveToCenter(){
+		endMove=true;
+
 
 	}
 }

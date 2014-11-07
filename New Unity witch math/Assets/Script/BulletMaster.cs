@@ -12,6 +12,17 @@ public class BulletMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		UnderNum[0] = (GameObject)Resources.Load ("Prefab/0bullet");
+		UnderNum[1] = (GameObject)Resources.Load ("Prefab/1bullet");
+		UnderNum[2] = (GameObject)Resources.Load ("Prefab/2bullet");
+		UnderNum[3] = (GameObject)Resources.Load ("Prefab/3bullet");
+		UnderNum[4] = (GameObject)Resources.Load ("Prefab/4bullet");
+		UnderNum[5] = (GameObject)Resources.Load ("Prefab/5bullet");
+		UnderNum[6] = (GameObject)Resources.Load ("Prefab/6bullet");
+		UnderNum[7] = (GameObject)Resources.Load ("Prefab/7bullet");
+		UnderNum[8] = (GameObject)Resources.Load ("Prefab/8bullet");
+		UnderNum[9] = (GameObject)Resources.Load ("Prefab/9bullet");
+
 
 
 		int rnd;
@@ -67,6 +78,29 @@ public class BulletMaster : MonoBehaviour {
 			Bullet b = bulletArray[i].GetComponent<Bullet>();
 			b.state=3;
 
+		}
+
+	}
+
+	public void MoveCenter(){
+		GameObject CT = GameObject.Find("BulletCT");
+		Center center = CT.GetComponent<Center>();
+
+		for(int i=0;i<3;i++){
+			for(int m=0;m<9;m++){
+				Bullet b = bulletArray[m].GetComponent<Bullet>();
+				if(	b.bulletValue==center.cells[i]){
+					b.MoveToCenter();
+				}
+			}
+		}
+	}
+
+	public void BulletDestroy(){
+
+		for(int i=0;i<9;i++){
+			
+			Destroy(bulletArray[i]);
 		}
 
 	}
