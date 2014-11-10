@@ -50,17 +50,20 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(damageCount==0&&bulletEnd==true){
-			Damage();
-			damageCount=1;
-		}
 	
 	}
+
+    public void SetDamage()
+    {
+            Damage();
+            damageCount = 1;
+    }
 
 	public void Attacked(){
 	
 		GameObject CT = GameObject.Find("BulletCT");
-		BulletMaster master = CT.GetComponent<BulletMaster>();
+	
+        BulletMaster master = CT.GetComponent<BulletMaster>();
 		master.LockBullet();
 		master.MoveCenter();
 		Center center = CT.GetComponent<Center>();

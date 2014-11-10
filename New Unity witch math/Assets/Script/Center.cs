@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Center : MonoBehaviour {
 
@@ -84,6 +85,7 @@ public class Center : MonoBehaviour {
 			if(num==cells[i])break;
 		}
 
+
 		cells[i]=0;
 
 		if(!AttackBool()){
@@ -97,6 +99,9 @@ public class Center : MonoBehaviour {
 	}
 
 	private bool AttackBool(){
+
+        Array.FindIndex(cells, w => w == num).
+
 		int sum=0;
 		for(int i=0;i<3;i++){
 			if(cells[i]!=0)
@@ -111,6 +116,7 @@ public class Center : MonoBehaviour {
 	}
 
 	public int SumCenter(){
+
 		int sum=0;
 		for(int i=0;i<3;i++){
 				sum+=cells[i];
