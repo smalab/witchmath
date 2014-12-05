@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
 	public GameObject[] enemyNum =new GameObject[10];
 	public int enemyPoint ;
 	public bool win=false;
-	public bool bulletEnd=false;
+//	public bool bulletEnd=false;
 	private int damageCount=0;
 	GameObject num10;
 	GameObject num1;
@@ -50,11 +50,19 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(damageCount==0&&bulletEnd==true){
+		/*if(damageCount==0&&bulletEnd==true){
+			Damage();
+			damageCount=1;
+		}*/
+	
+	}
+
+	public void SetDamage(){
+
+		if(damageCount==0){
 			Damage();
 			damageCount=1;
 		}
-	
 	}
 
 	public void Attacked(){

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System;
 
 public class Center : MonoBehaviour {
 
@@ -41,8 +43,6 @@ public class Center : MonoBehaviour {
 
 			if(cells[i]==0)break;
 
-			emp=0;
-
 		}
 
 		return emp;
@@ -79,13 +79,7 @@ public class Center : MonoBehaviour {
 
 	public void RemoveCell(int bulletNum){
 
-		int i;
-		
-		for(i=0;i<3;i++){
-			if(bulletNum==cells[i])break;
-		}
-
-		cells[i]=0;
+		cells[Array.FindIndex(cells, w => w == bulletNum)]=0;
 
 		if(!AttackBool()){
 			Destroy(attack);
@@ -98,12 +92,12 @@ public class Center : MonoBehaviour {
 	}
 
 	private bool AttackBool(){
-		int sum=0;
+		/*int sum=0;
 		for(int i=0;i<3;i++){
 			if(cells[i]!=0)
 				sum++;
-		}
-		if(sum==2){
+		}*/
+		if(Array.FindAll(cells, w => w != 0).Length==2){
 			return true;
 		}else{
 			return false;
@@ -112,11 +106,16 @@ public class Center : MonoBehaviour {
 	}
 
 	public int SumCenter(){
-		int sum=0;
+		/*int sum=0;
 		for(int i=0;i<3;i++){
 				sum+=cells[i];
 		}
 		return sum;
+		*/
+
+		return cells.Sum();
+
+
 	}
 
 

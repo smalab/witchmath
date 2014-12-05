@@ -120,7 +120,7 @@ public class Bullet: MonoBehaviour {
 				
 				GameObject CT = GameObject.Find("EnemyCT");
 				Enemy em = CT.GetComponent<Enemy>();
-				em.bulletEnd=true;
+				em.SetDamage();
 				
 				Destroy(gameObject);
 			}
