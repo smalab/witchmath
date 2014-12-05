@@ -43,15 +43,15 @@ public class BulletMaster : MonoBehaviour {
 
 		for(int i=0;i<9;i++){
 
-	        if(i%2==0){
+	     //   if(i%2==0){
 
-				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -0.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
+				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -0.5f-(i%2), 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 				bulletArray[i]=num;
 				Bullet b = num.GetComponent<Bullet>();
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
 
-			}else{
+		/*	}else{
 
 				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 				bulletArray[i]=num;
@@ -59,7 +59,7 @@ public class BulletMaster : MonoBehaviour {
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
 			}
-
+		*/
 		}
 
 	

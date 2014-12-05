@@ -38,15 +38,14 @@ public class GameCT : MonoBehaviour {
 			enemy.EnemyDestroy();
 			Destroy(enemy);
 			NextGame();
-
 		}
 	}
 
 	public void lose(int p){
 		PlayerHp-=p;
-			if(PlayerHp<0){
-				PlayerHp=0;
-			}
+		if(PlayerHp<0){
+			PlayerHp=0;
+		}
 		PlayerHpBer.transform.localScale = new Vector3(PlayerHp/10f, 0.3f, 0.1f);
 		turnEnd();
 	}
@@ -65,6 +64,5 @@ public class GameCT : MonoBehaviour {
 		bCT.AddComponent(typeof(Center));
 		GameObject eCT = GameObject.Find("EnemyCT");
 		eCT.AddComponent(typeof(Enemy));
-		
 	}
 }

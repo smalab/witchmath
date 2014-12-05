@@ -13,8 +13,8 @@ public class Bullet: MonoBehaviour {
 	private float  speed=0.1f;
 	private float screenPoint1;
 	private float screenPoint2;
-	private bool move=false;
-	private bool endMove=false;
+	private bool bulletMove=false;
+	private bool bulletAttackMove=false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,24 +27,24 @@ public class Bullet: MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(move==true){
+		/*if(bulletMove==true){
 			transform.position = Vector3.MoveTowards (transform.position , goalVector , speed);
 			if(this.transform.position==goalVector)
-				move=false;
-		}
+				bulletMove=false;
+		}*/
 
-		if(endMove==true){
+		/*if(bulletAttackMove==true){
 			transform.position = Vector3.MoveTowards (transform.position , endVector , speed);
 			if(this.transform.position==endVector){
-				endMove=false;
-
+				bulletAttackMove=false;
+				
 				GameObject CT = GameObject.Find("EnemyCT");
 				Enemy em = CT.GetComponent<Enemy>();
 				em.bulletEnd=true;
-
+				
 				Destroy(gameObject);
 			}
-		}
+		}*/
 	
 	}
 
@@ -75,8 +75,10 @@ public class Bullet: MonoBehaviour {
 		Center center = CT.GetComponent<Center>();
 		goalVector=center.SetEmptyCell(bulletValue,startVector);
 		Debug.Log(goalVector);
-		if(goalVector!=startVector){
-			move=true;
+		//if(goalVector!=startVector){
+		if(goalVector!=Vector3.zero){
+			StartCoroutine(MoveCoroutine());
+			//bulletMove=true;
 			state=2;
 		}
 	}
@@ -87,14 +89,43 @@ public class Bullet: MonoBehaviour {
 		center.RemoveCell(bulletValue);
 		goalVector=startVector;
 		Debug.Log(goalVector);
-		move=true;
+		StartCoroutine(MoveCoroutine());
+		//bulletMove=true;
 		state=1;
-
 	}
 
 	public void MoveToCenter(){
-		endMove=true;
-
-
+		StartCoroutine(AttackMoveCoroutine());
 	}
+
+	public void AttackState(){
+		state=3;
+	}
+
+	IEnumerator MoveCoroutine(){
+		while(true){
+			transform.position = Vector3.MoveTowards (transform.position , goalVector , speed);
+			if(this.transform.position==goalVector){
+				yield break;
+			}
+			yield return new WaitForSeconds(0.01f);
+		}
+	}
+
+	IEnumerator AttackMoveCoroutine(){
+		while(true){
+			transform.position = Vector3.MoveTowards (transform.position , endVector , speed);
+			if(this.transform.position==endVector){
+				bulletAttackMove=false;
+				
+				GameObject CT = GameObject.Find("EnemyCT");
+				Enemy em = CT.GetComponent<Enemy>();
+				em.bulletEnd=true;
+				
+				Destroy(gameObject);
+			}
+			yield return new WaitForSeconds(0.01f);
+		}
+	}
+	
 }

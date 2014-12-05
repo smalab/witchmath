@@ -49,17 +49,17 @@ public class Center : MonoBehaviour {
 
 	}
 
-	public Vector3 SetEmptyCell(int num,Vector3 home){
+	public Vector3 SetEmptyCell(int bulletNum,Vector3 homePosition){
 
-		int emp;
+		int empty;
 
-		emp=GetEmpty();
+		empty=GetEmpty();
 
 
 
-		if(emp!=0){
+		if(empty!=0){
 
-		    cells[emp-1]=num;
+		    cells[empty-1]=bulletNum;
 
 			Debug.Log(cells[0]);
 			Debug.Log(cells[1]);
@@ -68,20 +68,21 @@ public class Center : MonoBehaviour {
 			if(AttackBool()){
 				attack =Instantiate(button, new Vector3(0, 3.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 			}
-		    return CenterPos[emp-1];
+		    return CenterPos[empty-1];
 
 		}else{
 			//Debug.Log(cells[0]);
-			return home;
+			//return homePosition;
+			return Vector3.zero;
 		}
 	}
 
-	public void RemoveCell(int num){
-		int emp;
+	public void RemoveCell(int bulletNum){
+
 		int i;
 		
 		for(i=0;i<3;i++){
-			if(num==cells[i])break;
+			if(bulletNum==cells[i])break;
 		}
 
 		cells[i]=0;
