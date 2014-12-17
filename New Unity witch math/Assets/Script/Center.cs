@@ -43,6 +43,8 @@ public class Center : MonoBehaviour {
 
 			if(cells[i]==0)break;
 
+			emp=0;
+
 		}
 
 		return emp;

@@ -10,7 +10,7 @@ public class Bullet: MonoBehaviour {
 	public Vector3 goalVector;
 	public Vector3 endVector=new Vector3(0f, 2.2f, 0f);
 	public int state = 1;
-	private float  speed=0.1f;
+	private float  speed=0.3f;
 	private float screenPoint1;
 	private float screenPoint2;
 	private bool bulletMove=false;

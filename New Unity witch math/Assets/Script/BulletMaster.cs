@@ -76,7 +76,8 @@ public class BulletMaster : MonoBehaviour {
 		for(int i=0;i<9;i++){
 
 			Bullet b = bulletArray[i].GetComponent<Bullet>();
-			b.state=3;
+		    // b.state=3;
+			b.AttackState();
 
 		}
 

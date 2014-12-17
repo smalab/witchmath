@@ -55,7 +55,7 @@ public class GameCT : MonoBehaviour {
 			EnemyHp=0;
 		}
 		EnemyHpBer.transform.localScale = new Vector3(EnemyHp/10f, 0.3f, 0.1f);
-		turnEnd();
+		turnEnd();  
 	}
 
 	void NextGame(){
