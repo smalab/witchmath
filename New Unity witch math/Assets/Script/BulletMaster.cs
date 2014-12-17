@@ -5,13 +5,12 @@ public class BulletMaster : MonoBehaviour {
 	
 	public GameObject[] UnderNum =new GameObject[10];
 	public GameObject parent;
-
 	int[] rndArray = new int[9] ;
 	GameObject[] bulletArray= new GameObject[9];
-	     
-	// Use this for initialization
-	void Start () {
+	bool helthUpEventFlag=false;
 
+	void Start () {
+	
 		UnderNum[0] = (GameObject)Resources.Load ("Prefab/0bullet");
 		UnderNum[1] = (GameObject)Resources.Load ("Prefab/1bullet");
 		UnderNum[2] = (GameObject)Resources.Load ("Prefab/2bullet");
@@ -23,27 +22,20 @@ public class BulletMaster : MonoBehaviour {
 		UnderNum[8] = (GameObject)Resources.Load ("Prefab/8bullet");
 		UnderNum[9] = (GameObject)Resources.Load ("Prefab/9bullet");
 
-
-
 		int rnd;
 		for(int i=1;i<10;i++){
-
-
-			do{
-			   rnd=Random.Range (0, 9);
-
-			}while(rndArray[rnd]!=0);
-
+			do{rnd=Random.Range (0, 9);}while(rndArray[rnd]!=0);
 			rndArray[rnd]=i;
-
 		}
 
-
-
+		int helthRnd;
+		helthRnd=Random.Range (0, 5);
+		if(helthRnd==1)
+		helthUpEventFlag=true;
+	
+		int helthBulletRnd=Random.Range (0, 9);
 
 		for(int i=0;i<9;i++){
-
-	     //   if(i%2==0){
 
 				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -0.5f-(i%2), 0), Quaternion.Euler(0f,0f,0f))as GameObject;
 				bulletArray[i]=num;
@@ -51,42 +43,29 @@ public class BulletMaster : MonoBehaviour {
 				b.bulletValue=rndArray[i];
 				bulletArray[i]=num;
 
-		/*	}else{
-
-				GameObject num =Instantiate(UnderNum[rndArray[i]], new Vector3(-2f+i/2f, -1.5f, 0), Quaternion.Euler(0f,0f,0f))as GameObject;
-				bulletArray[i]=num;
-				Bullet b = num.GetComponent<Bullet>();
-				b.bulletValue=rndArray[i];
-				bulletArray[i]=num;
-			}
-		*/
+				if(helthUpEventFlag){
+					if(helthBulletRnd==i){
+					Debug.Log("HelthUp");
+					b.HelthUpEvent();
+					}
+				}
 		}
-
-	
-
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 	}
 
 	public void LockBullet(){
-
 		for(int i=0;i<9;i++){
-
 			Bullet b = bulletArray[i].GetComponent<Bullet>();
-		    // b.state=3;
 			b.AttackState();
-
 		}
-
 	}
 
 	public void MoveCenter(){
 		GameObject CT = GameObject.Find("BulletCT");
 		Center center = CT.GetComponent<Center>();
-
 		for(int i=0;i<3;i++){
 			for(int m=0;m<9;m++){
 				Bullet b = bulletArray[m].GetComponent<Bullet>();
@@ -98,11 +77,8 @@ public class BulletMaster : MonoBehaviour {
 	}
 
 	public void BulletDestroy(){
-
 		for(int i=0;i<9;i++){
-			
 			Destroy(bulletArray[i]);
 		}
-
 	}
 }

@@ -49,11 +49,6 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		/*if(damageCount==0&&bulletEnd==true){
-			Damage();
-			damageCount=1;
-		}*/
 	
 	}
 

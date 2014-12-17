@@ -15,47 +15,22 @@ public class Bullet: MonoBehaviour {
 	private float screenPoint2;
 	private bool bulletMove=false;
 	private bool bulletAttackMove=false;
+	private bool helthUpEvent=false;
+	private GameObject clone;
+	public GameObject helthPrefab;
 
-	// Use this for initialization
 	void Start () {
-
 		startVector = this.transform.position;
-	
-		
 	}
-	// Use this for initialization
 
-	// Update is called once per frame
 	void Update () {
-		/*if(bulletMove==true){
-			transform.position = Vector3.MoveTowards (transform.position , goalVector , speed);
-			if(this.transform.position==goalVector)
-				bulletMove=false;
-		}*/
-
-		/*if(bulletAttackMove==true){
-			transform.position = Vector3.MoveTowards (transform.position , endVector , speed);
-			if(this.transform.position==endVector){
-				bulletAttackMove=false;
-				
-				GameObject CT = GameObject.Find("EnemyCT");
-				Enemy em = CT.GetComponent<Enemy>();
-				em.bulletEnd=true;
-				
-				Destroy(gameObject);
-			}
-		}*/
 	
 	}
-
 	
 	void OnMouseDown() {
-
 		screenPoint1 = Input.mousePosition.y;
 		Debug.Log("down");
-
 	}
-	
 
 	void OnMouseUp() {
 		Debug.Log("up");
@@ -67,9 +42,7 @@ public class Bullet: MonoBehaviour {
 			SlideDown();
 		}
 	}
-
-
-
+	
 	void SlideUp(){
 	    GameObject CT = GameObject.Find("BulletCT");
 		Center center = CT.GetComponent<Center>();
@@ -100,6 +73,15 @@ public class Bullet: MonoBehaviour {
 
 	public void AttackState(){
 		state=3;
+	}
+
+	public void HelthUpEvent(){
+		helthUpEvent=true;
+		Debug.Log("BulletHelthEventOK");
+		//複製したプレハブをGameObjectに型キャストして入れます
+		clone = (GameObject) Instantiate(helthPrefab, this.transform.position, Quaternion.identity);
+		//親オブジェクトの指定はこんな感じでできます。これを以下プレハブ複製箇所に全部適応
+		clone.transform.parent = this.transform;
 	}
 
 	IEnumerator MoveCoroutine(){
